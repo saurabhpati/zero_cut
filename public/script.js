@@ -1,3 +1,5 @@
+// img reference
+var img = document.querySelector('.he');
 // name of player1 and player 2 by prompt;
 
 var player1_name = prompt("enter the name of player1");
@@ -73,8 +75,9 @@ function move_handle(e){
 		return false;
 	} 
 	change_content(e.target,player_control);
-	if(check_end()){
-		change_content(consol,`<center><b>${check_end()==='0'?player1_name:player2_name}  won the match</b></center>`);
+	if(check_end().player){
+		change_content(consol,`<center><b>${check_end().player==='0'?player1_name:player2_name}  won the match</b></center>`);
+		change_cell_background(check_end().case);
 		remove_controls();
 	}
 	player_control = move_rotate(player_control);
@@ -104,35 +107,35 @@ function check_end(){
 	var nine 	= $9.innerHTML;
 
 	if(one === two && one === three){
-		return one;
+		return {case:1,player:one};
 	}
 
 	if(four === five && four === six){
-		return four;
+		return {case:2,player:four};
 	}
 
 	if(seven === eight && seven === nine){
-		return seven;
+		return {case:3,player:seven};
 	}
 
 	if(one === four && one === seven){
-		return one;
+		return {case:4,player:one};
 	}
 
 	if(two === five && two === eight){
-		return two;
+		return {case:5,player:eight};
 	}
 
 	if(three === six && three === nine){
-		return three;
+		return {case:6,player:six};
 	}
 
 	if(one === five && one === nine){
-		return one;
+		return {case:7,player:nine};
 	}
 
 	if(three === five && three === seven){
-		return three;
+		return {case:8,player:five};
 	}
 
 	else{
@@ -157,3 +160,49 @@ function remove_controls(){
 	$8.removeEventListener('click',move_handle);
 	$9.removeEventListener('click',move_handle);
 }
+
+// change the background if a player wins
+function change_cell_background(a){
+	switch (a) {
+		case 1:
+			$1.style.background="#009688";
+			$2.style.background="#009688";
+			$3.style.background="#009688";
+			break;
+		case 2:
+			$4.style.background="#009688";
+			$5.style.background="#009688";
+			$6.style.background="#009688";
+			break;
+		case 3:
+			$7.style.background="#009688";
+			$8.style.background="#009688";
+			$9.style.background="#009688";
+		case 4:
+			$1.style.background="#009688";
+			$4.style.background="#009688";
+			$7.style.background="#009688";
+			break;
+		case 5:
+			$2.style.background="#009688";
+			$5.style.background="#009688";
+			$8.style.background="#009688";
+			break;
+		case 6:
+			$3.style.background="#009688";
+			$6.style.background="#009688";
+			$9.style.background="#009688";
+			break;
+		case 7:
+			$1.style.background="#009688";
+			$5.style.background="#009688";
+			$9.style.background="#009688";
+			break;
+		case 8:
+			$3.style.background="#009688";
+			$5.style.background="#009688";
+			$7.style.background="#009688";
+			break;
+	}
+}
+

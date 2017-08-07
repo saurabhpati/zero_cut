@@ -1,0 +1,22 @@
+{
+  "short_name": "zero cut",
+  "name": "Kinlan's AirHorner of Infamy",
+  "icons": [
+    {
+      "src": "av.ico",
+      "type": "image/ico",
+      "sizes": "48x48"
+    },
+    {
+      "src": "av.ico",
+      "type": "image/ico",
+      "sizes": "96x96"
+    },
+    {
+      "src": "av.ico",
+      "type": "image/ico",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/"
+}
